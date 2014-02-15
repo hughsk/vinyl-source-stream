@@ -14,7 +14,6 @@ function createSourceStream(filename) {
 
   var file = new File(filename ? {
       cwd: path.dirname(filename)
-    , base: path.basename(filename)
     , path: filename
     , contents: ins
   } : {
