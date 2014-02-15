@@ -26,6 +26,7 @@ using `gulpify`:
 
 ``` javascript
 var source = require('vinyl-source-stream')
+var streamify = require('gulp-streamify')
 var browserify = require('browserify')
 var uglify = require('gulp-uglify')
 var gulpify = require('gulpify')
@@ -45,7 +46,7 @@ gulp.task('browserify', function() {
 
   bundleStream
     .pipe(source('index.js'))
-    .pipe(uglify())
+    .pipe(streamify(uglify()))
     .pipe(gulp.dest('./bundle.js'))
 })
 ```
