@@ -1,7 +1,7 @@
 {
   "name": "vinyl-source-stream",
   "description": "Use conventional text streams at the start of your gulp or vinyl pipelines",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "browser": "index.js",
   "dependencies": {
