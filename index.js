@@ -13,7 +13,7 @@ function createSourceStream(filename) {
   }
 
   var file = new File(filename ? {
-    path: filename
+      path: filename
     , contents: ins
   } : {
     contents: ins
