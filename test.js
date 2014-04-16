@@ -12,7 +12,8 @@ test('capitalizing test file', function(t) {
     .pipe(map(function(str) {
       return str.toString().toUpperCase()
     }))
-    .pipe(gulp.dest('./fixture.js'))
+    .pipe(rename("fixture.js"))
+    .pipe(gulp.dest('.'))
     .once('end', function() {
       // gulp.dest finishes before writing
       // the file is complete...
@@ -31,4 +32,3 @@ test('capitalizing test file', function(t) {
       }, 1500)
     })
 })
-
