@@ -1,36 +1,35 @@
-var through2 = require('through2')
-var File = require('vinyl')
-var path = require('path')
+var through2 = require('through2');
+var File = require('vinyl');
+var path = require('path');
 
-module.exports = createSourceStream
+module.exports = function (filename, baseDir) {
+    var ins = through2()
+    var out = false
 
-function createSourceStream(filename) {
-  var ins = through2()
-  var out = false
-
-  if (filename) {
-    filename = path.resolve(filename)
-  }
-
-  var file = new File(filename ? {
-      path: filename
-    , contents: ins
-  } : {
-    contents: ins
-  })
-
-  return through2({
-    objectMode: true
-  }, function(chunk, enc, next) {
-    if (!out) {
-      this.push(file)
-      out = true
+    var opts = {
+        contents: ins
+    };
+    if (filename) {
+        opts.path = path.resolve(baseDir || __dirname, filename);
     }
+    if (baseDir) {
+        opts.base = baseDir;
+    }
+    console.log(opts);
+    var file = new File(opts);
 
-    ins.push(chunk)
-    next()
-  }, function() {
-    ins.push(null)
-    this.push(null)
-  })
+    return through2({
+        objectMode: true
+    }, function(chunk, enc, next) {
+        if (!out) {
+            this.push(file)
+            out = true
+        }
+
+        ins.push(chunk)
+        next()
+    }, function() {
+        ins.push(null)
+        this.push(null)
+    })
 }
