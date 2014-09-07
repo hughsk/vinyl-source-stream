@@ -14,7 +14,9 @@
     "gulp-rename": "~0.2.1",
     "gulp": "~3.3.0"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "node test"
+  },
   "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
   "license": "MIT",
   "repository": {
