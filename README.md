@@ -44,7 +44,7 @@ gulp.task('gulpify', function() {
 
 // using vinyl-source-stream:
 gulp.task('browserify', function() {
-  var bundleStream = browserify('index.js').bundle()
+  var bundleStream = browserify('./index.js').bundle()
 
   bundleStream
     .pipe(source('index.js'))
