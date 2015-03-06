@@ -2,22 +2,20 @@ var through2 = require('through2')
 var File = require('vinyl')
 var path = require('path')
 
-module.exports = createSourceStream
-
-function createSourceStream(filename) {
+module.exports = function (filename, baseDir) {
   var ins = through2()
   var out = false
 
-  if (filename) {
-    filename = path.resolve(filename)
-  }
-
-  var file = new File(filename ? {
-      path: filename
-    , contents: ins
-  } : {
+  var opts = {
     contents: ins
-  })
+  };
+  if (filename) {
+    opts.path = path.resolve(baseDir || __dirname, filename)
+  }
+  if (baseDir) {
+    opts.base = baseDir
+  }
+  var file = new File(opts)
 
   return through2({
     objectMode: true
