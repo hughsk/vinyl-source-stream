@@ -32,3 +32,17 @@ test('capitalizing test file', function(t) {
       }, 1500)
     })
 })
+
+test('baseDir: defaults to process.cwd()', function(t) {
+  process.chdir(path.resolve(__dirname, '..', '..'))
+
+  fs.createReadStream(__filename)
+    .pipe(srcStream(path.basename(__filename)))
+    .on('data', function(file) {
+      t.equal(process.cwd(), path.dirname(file.path), 'defaults to process.cwd()')
+
+      process.chdir(__dirname)
+
+      t.end()
+    })
+})

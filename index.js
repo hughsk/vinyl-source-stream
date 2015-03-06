@@ -8,13 +8,11 @@ module.exports = function (filename, baseDir) {
 
   var opts = {
     contents: ins
-  };
-  if (filename) {
-    opts.path = path.resolve(baseDir || __dirname, filename)
   }
-  if (baseDir) {
-    opts.base = baseDir
-  }
+
+  if (filename) opts.path = path.resolve(baseDir || process.cwd(), filename)
+  if (baseDir) opts.base = baseDir
+
   var file = new File(opts)
 
   return through2({
