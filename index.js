@@ -4,20 +4,22 @@ var path = require('path')
 
 module.exports = createSourceStream
 
-function createSourceStream(filename) {
+function createSourceStream(filename, opts) {
   var ins = through2()
   var out = false
 
-  if (filename) {
-    filename = path.resolve(filename)
-  }
+  var spec = {};
 
-  var file = new File(filename ? {
-      path: filename
-    , contents: ins
-  } : {
-    contents: ins
-  })
+  // can have cwd and base overrides, and cwdbase bool to force base to cwd
+  opts = opts || {};
+
+  // populate vinyl cwd and path exactly like gulp.src() would
+  spec.cwd = path.resolve(opts.cwd || process.cwd());
+  spec.path = path.resolve(spec.cwd, filename);
+  spec.base = opts.cwdbase ? spec.cwd : (path.resolve(opts.base || path.dirname(spec.path)));
+  spec.contents = ins;
+
+  var file = new File(spec);
 
   return through2({
     objectMode: true
