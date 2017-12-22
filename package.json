@@ -5,8 +5,8 @@
   "main": "index.js",
   "browser": "index.js",
   "dependencies": {
-    "vinyl": "^0.4.3",
-    "through2": "^0.6.1"
+    "vinyl": "^2.1.0",
+    "through2": "^2.0.3"
   },
   "devDependencies": {
     "tape": "~2.3.2",
