@@ -9,10 +9,9 @@
     "through2": "^2.0.3"
   },
   "devDependencies": {
-    "tape": "~2.3.2",
-    "vinyl-map": "0.0.1",
     "gulp-rename": "~0.2.1",
-    "gulp": "~3.3.0"
+    "tape": "~2.3.2",
+    "vinyl-fs": "^3.0.0"
   },
   "scripts": {
     "test": "node test"
