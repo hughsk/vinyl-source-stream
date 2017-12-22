@@ -5,7 +5,7 @@ Use conventional text streams at the start of your
 [vinyl](http://github.com/wearefractal/vinyl) pipelines, making for nicer
 interoperability with the existing npm stream ecosystem.
 
-Take, for example, [browserify](http://browserify.org/). There's the
+Take, for example, [browserify](http://browserify.org/). There are the
 [gulp-browserify](https://github.com/deepak1556/gulp-browserify) and
 [gulpify](https://github.com/hughsk/gulpify) plugins, which you can use in
 combination with gulp to get browserify working in your build. Unfortunately,
