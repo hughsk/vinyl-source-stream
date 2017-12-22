@@ -24,14 +24,14 @@ simple to use conventional text streams such as this in combination with gulp.
 Here's an example of using `vinyl-source-stream` and `browserify`, compared to
 using `gulpify`:
 
-``` javascript
-var source = require('vinyl-source-stream')
-var streamify = require('gulp-streamify')
-var browserify = require('browserify')
-var uglify = require('gulp-uglify')
-var gulpify = require('gulpify')
-var rename = require('gulp-rename')
-var gulp = require('gulp')
+```js
+const source = require('vinyl-source-stream')
+const streamify = require('gulp-streamify')
+const browserify = require('browserify')
+const uglify = require('gulp-uglify')
+const gulpify = require('gulpify')
+const rename = require('gulp-rename')
+const gulp = require('gulp')
 
 // using gulpify:
 gulp.task('gulpify', function() {
@@ -44,7 +44,7 @@ gulp.task('gulpify', function() {
 
 // using vinyl-source-stream:
 gulp.task('browserify', function() {
-  var bundleStream = browserify('./index.js').bundle()
+  const bundleStream = browserify('./index.js').bundle()
 
   bundleStream
     .pipe(source('index.js'))
@@ -67,7 +67,7 @@ Creates a through stream which takes text as input, and emits a single
 vinyl file instance for streams down the pipeline to consume.
 
 `filename` is a "pretend" filename to use for your file, which some streams
-might use to determine various factors such as the final filename of your file.
+might use to determine constious factors such as the final filename of your file.
 It should be a string, and though recommended, using this argument is optional.
 
 ## License ##
