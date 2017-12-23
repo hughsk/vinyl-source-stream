@@ -1,27 +1,19 @@
 var rename = require('gulp-rename')
+var map = require('vinyl-map')
 var srcStream = require('./')
-var vfs = require('vinyl-fs')
+var gulp = require('gulp')
 var test = require('tape')
 var path = require('path')
 var fs = require('fs')
-var through = require('through2');
-
-function upper() {
-  return through(function(chunk, _, cb) {
-    var str = chunk.toString().toUpperCase();
-    cb(null, new Buffer(str));
-  });
-}
 
 test('capitalizing test file', function(t) {
   fs.createReadStream(__filename)
     .pipe(srcStream(__filename))
-    .pipe(through.obj(function(file, _, cb) {
-      file.contents = file.contents.pipe(upper());
-      cb(null, file);
+    .pipe(map(function(str) {
+      return str.toString().toUpperCase()
     }))
     .pipe(rename("fixture.js"))
-    .pipe(vfs.dest('.'))
+    .pipe(gulp.dest('.'))
     .once('end', function() {
       // gulp.dest finishes before writing
       // the file is complete...
